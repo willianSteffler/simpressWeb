@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SimpressWeb.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<h1>Categorias</h1>
+
+<p>
+    <i class="fas fa-plus-circle" style="color:green"></i>
+
+    <a asp-action="Create">
+        Criar Nova
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+            <td>
+
+                <a asp-action="Edit" asp-route-id="@item.ID"><i class="fas fa-edit"></i> Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ID"><i class="fas fa-info-circle" style="color:cadetblue"></i> Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID"><i class="fas fa-minus-circle" style="color:red"></i> Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
